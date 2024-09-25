@@ -7,13 +7,13 @@ import UnauthorisedError from './pages/errors/unauthorised-error.tsx'
 const router = createBrowserRouter([
   // Auth routes
   {
-    path: '/sign-in',
+    path: '/sign-in-2',
     lazy: async () => ({
       Component: (await import('./pages/auth/sign-in')).default,
     }),
   },
   {
-    path: '/sign-in-2',
+    path: '/sign-in',
     lazy: async () => ({
       Component: (await import('./pages/auth/sign-in-2')).default,
     }),
