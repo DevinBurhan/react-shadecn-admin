@@ -5,12 +5,15 @@ import router from '@/router'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
+import QueryProviders from './lib/TanstackProvider'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-      <RouterProvider router={router} />
-      <Toaster />
+      <QueryProviders>
+        <RouterProvider router={router} />
+        <Toaster />
+      </QueryProviders>
     </ThemeProvider>
   </React.StrictMode>
 )

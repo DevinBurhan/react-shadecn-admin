@@ -1,5 +1,8 @@
-import { Layout } from '@/components/custom/layout'
 import { Button } from '@/components/custom/button'
+import { Layout } from '@/components/custom/layout'
+import { Search } from '@/components/search'
+import ThemeSwitch from '@/components/theme-switch'
+import { TopNav } from '@/components/top-nav'
 import {
   Card,
   CardContent,
@@ -7,15 +10,20 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Search } from '@/components/search'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import ThemeSwitch from '@/components/theme-switch'
-import { TopNav } from '@/components/top-nav'
 import { UserNav } from '@/components/user-nav'
-import { RecentSales } from './components/recent-sales'
+import { useGetQuestinos, useGetVariable } from '@/state/Test/Test.hook'
 import { Overview } from './components/overview'
+import { RecentSales } from './components/recent-sales'
 
 export default function Dashboard() {
+  const { data: qData, isLoading: isPending } = useGetQuestinos()
+  console.log('🚀 ~ Dashboard ~ qData:', qData)
+  const { data: variableData, isLoading } = useGetVariable()
+  console.log('🚀 ~ Dashboard ~ variableData:', variableData)
+  if (isLoading || isPending) {
+    return <h1>Loading..</h1>
+  }
   return (
     <Layout>
       {/* ===== Top Heading ===== */}
